@@ -9,8 +9,12 @@ export function fetchWeather(city) {
   const url = `${ROOT_URL}&q=${city},us`;
   const request = axios.get(url)
   
+  console.log("Request: ", request)
   return {
     type: FETCH_WEATHER,
-    payload: request
-  }
+    payload: request                                            // Returning the promise as the payload
+  }                                                           
 }
+
+// redux promise sees the action and sees the payload property , if the payload is a promise, redux promise stops the action. 
+// Once the request finishes, it dispatches a new action with a payload of the resolved request. Unwraps the promise.
