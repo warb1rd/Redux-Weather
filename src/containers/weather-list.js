@@ -5,7 +5,6 @@ import GoogleMap from '../components/google-map.js';
 
 class WeatherList extends Component {
   renderWeather(cityData) {
-
     const name = cityData.city.name;
     const temps = cityData.list.map(weather => weather.main.temp);
     const pressures = cityData.list.map(weather => weather.main.pressure);
@@ -15,15 +14,14 @@ class WeatherList extends Component {
     return (
       <tr key={name}>
         <td><GoogleMap lat={lat} lon={lon} /></td>
-        <td><Chart data={temps} color="orange" units="F" /></td>
-        <td><Chart data={pressures} color="green" units="hpa"/></td>
+        <td><Chart data={temps} color="orange" units="℉" /></td>
+        <td><Chart data={pressures} color="green" units=" hPa"/></td>
         <td><Chart data={humidities} color="blue" units="%"/></td>
       </tr>
     )
   }
 
   render() { 
-    console.log(this.props);
     return (
       <table className="table table-hover">
         <thead>
